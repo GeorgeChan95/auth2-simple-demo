@@ -25,7 +25,7 @@ spring:
             # 客户端秘钥，使用自己的gitee的客户端秘钥
             client-secret: 8c6df920482a83d4662a34b76a9c3a62c8e80713e4f2957bb0459c3ceb70d73b
             # 回调地址 与gitee 配置的回调地址一致才行
-            redirect-uri: http://192.168.56.1:9000/login/oauth2/code/gitee
+            redirect-uri: http://127.0.0.1:9000/login/oauth2/code/gitee
             # 申请scope列表
             scope:
               - emails
