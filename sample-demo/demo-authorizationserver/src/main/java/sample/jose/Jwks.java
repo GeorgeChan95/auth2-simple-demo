@@ -38,6 +38,12 @@ public final class Jwks {
 	private Jwks() {
 	}
 
+	/**
+	 * 自定义方法生成RSA密钥，用于生成和验证 JWT，
+	 * RSA 密钥是用于加密和签名的非对称密钥对，包含公钥和私钥。
+	 * 私钥用于签名 JWT，公钥用于验证签名的有效性。
+	 * @return
+	 */
 	public static RSAKey generateRsa() {
 		KeyPair keyPair = KeyGeneratorUtils.generateRsaKey();
 		RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
