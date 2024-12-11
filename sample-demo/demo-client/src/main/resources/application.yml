@@ -60,6 +60,7 @@ spring:
           spring:
             # 指定 OAuth2 授权服务器的 issuer 地址,
             # Spring Security 会从该地址获取授权服务器的元数据（例如 token 端点、授权端点等）
+            # 注意, issuer-uri 不能与 authorizationserver 在同一个域下， 因为在跳转时，同域session会覆盖
             issuer-uri: http://192.168.6.88:9000
 
 messages:
