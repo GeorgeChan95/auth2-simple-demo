@@ -15,14 +15,20 @@ spring:
   security:
     oauth2:
       client:
-        registration:
+        registration: # 定义了多个 OAuth2 客户端的配置，每个客户端都有独立的名称（如 messaging-client-oidc、messaging-client-authorization-code 等）
           messaging-client-oidc:
+            # 指定使用的授权服务器配置，需在 provider 部分定义。
             provider: spring
+            # 用于识别客户端的 ID 和密钥，是 OAuth2 客户端认证的凭据。
             client-id: messaging-client
             client-secret: secret
+            # 指定授权模式为 Authorization Code（授权码模式），需要用户交互
             authorization-grant-type: authorization_code
+            # 授权完成后，授权服务器会将用户重定向到此 URI。
             redirect-uri: "http://127.0.0.1:8080/login/oauth2/code/{registrationId}"
+            # 定义客户端请求的权限范围，包括 OpenID Connect 标准的 openid 和用户信息的 profile
             scope: openid, profile
+            # 客户端的显示名称，仅用于区分用途或 UI 显示
             client-name: messaging-client-oidc
           messaging-client-authorization-code:
             provider: spring
@@ -36,18 +42,24 @@ spring:
             provider: spring
             client-id: messaging-client
             client-secret: secret
+            # 使用了 客户端凭据模式（Client Credentials Grant）,此模式不涉及用户，适合后端服务之间的授权场景,客户端直接用 client-id 和 client-secret 获取访问令牌。
             authorization-grant-type: client_credentials
             scope: message.read,message.write
             client-name: messaging-client-client-credentials
           messaging-client-device-code:
             provider: spring
             client-id: device-messaging-client
+            # 表示客户端无需身份验证。
             client-authentication-method: none
+            # 使用了 设备授权码模式（Device Code Grant）,设备授权码的标准授权类型。
             authorization-grant-type: urn:ietf:params:oauth:grant-type:device_code
             scope: message.read,message.write
             client-name: messaging-client-device-code
+        # 定义了授权服务器的配置
         provider:
           spring:
+            # 指定 OAuth2 授权服务器的 issuer 地址,
+            # Spring Security 会从该地址获取授权服务器的元数据（例如 token 端点、授权端点等）
             issuer-uri: http://127.0.0.1:9000
 
 messages:
