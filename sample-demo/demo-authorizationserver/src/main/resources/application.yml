@@ -21,11 +21,11 @@ spring:
             # 认证方式
             authorization-grant-type: authorization_code
             # 客户端id，使用自己的gitee的客户端id
-            client-id: 29b85c97ed682910eaa4276d84a0c4532f00b962e1b9fe8552520129e65ae432
+            client-id: 988491cf5657a6e53b79cccf834842632d3a6ba684e0aedf058c5daf9391bea4
             # 客户端秘钥，使用自己的gitee的客户端秘钥
-            client-secret: 8c6df920482a83d4662a34b76a9c3a62c8e80713e4f2957bb0459c3ceb70d73b
+            client-secret: e73a2c17b3c49e5b430577b3b745128b3fafc61c9c1820c6c7eceb7906380f43
             # 回调地址 与gitee 配置的回调地址一致才行
-            redirect-uri: http://127.0.0.1:9000/login/oauth2/code/gitee
+            redirect-uri: http://192.168.6.88:9000/login/oauth2/code/gitee
             # 申请scope列表
             scope:
               - emails
